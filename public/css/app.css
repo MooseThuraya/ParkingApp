@@ -1,0 +1,312 @@
+body{
+    font-family: 'Poppins', sans-serif;
+}
+h1, h2, h3, h4, h5,h6{
+    color: #053361;
+    font-weight: 600;
+}
+p{
+    color: #6D747A ;
+}
+.auth-image{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+.start-image{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+.flex-container{
+    height: 100vh;
+    diplay:flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items: center;
+}
+.center-div{
+    margin: 0 auto;
+}
+.center-text{
+    text-align: center;
+}
+.input-img-wrapper{
+    position: relative;
+}
+.no-bottom-margin{
+    margin-bottom: 0;
+}
+.text-field{
+    border: 1px solid #C8CACC;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding-left: 40px;
+}
+/*.otp-field[type=text]:focus{*/
+/*    box-shadow: inset 0 -1px 0 #ddd;*/
+/*}*/
+.otp-field{
+    border: none;
+    border-bottom: 2px solid;
+    border-bottom-color: #C8CACC;
+    font-size: 40px;
+    font-weight: 400;
+    height: 60px;
+    text-align: center;
+    color: #1a202c;
+    border-radius: unset;
+    width: 60px;
+    color: #1a202c;
+    display: inline;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.otp-field:focus{
+    border-bottom-color: gray;
+    outline: none;
+}
+.countdown{
+    width: 200px;
+    height: 200px;
+}
+.disabled{
+    pointer-events: none;
+    color: #868686;
+}
+
+.divider{
+    margin-bottom: 30px;
+}
+.divider-lg{
+    margin-bottom: 50px;
+}
+
+.field-icon{
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+}
+.city-icon{
+    height: 20px;
+    width: 20px;
+}
+.disable-btn{
+    pointer-events: none;
+    color: #a7a7a7;
+    background: #e3e3e3;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-weight: 500;
+}
+.button{
+    /* 2 */
+    color: #053361;
+    background: #FFD900;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-weight: 600;
+
+}
+.button:hover{
+    background: #053361;
+    color: #FFFFFF;
+    /* Shadow - 25% Dark blue */
+    box-shadow: 0px 4px 4px rgba(5, 51, 97, 0.25);
+    border-radius: 10px;
+    transition: 0.5s;
+}
+.button:focus{
+    background: #FFD900;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+/*YELLOW BACKGROUND DESIGN*/
+/*.start-button{*/
+/*    !* 2 *!*/
+/*    color: #ffffff;*/
+/*    background: #053361;*/
+/*    box-sizing: border-box;*/
+/*    border-radius: 10px;*/
+/*    font-weight: 600;*/
+/*}*/
+/*.start-button:hover{*/
+/*    background: #ffffff;*/
+/*    color: #053361;*/
+/*    !* Shadow - 25% Dark blue *!*/
+/*    box-shadow: 0px 4px 4px rgba(5, 51, 97, 0.25);*/
+/*    border-radius: 10px;*/
+/*    transition: 0.5s;*/
+
+/*}*/
+/*.start-button:focus{*/
+/*    background: #053361;*/
+/*    border-radius: 10px;*/
+/*    transition: 0.5s;*/
+/*}*/
+/*.return-button{*/
+/*    !* 2 *!*/
+/*    color: #ffffff;*/
+/*    background: #FFD900;*/
+/*    box-sizing: border-box;*/
+/*    border-radius: 10px;*/
+/*    font-weight: 600;*/
+/*    border: 1px solid;*/
+/*    border-color: #ffffff;*/
+
+/*}*/
+/*.return-button:hover{*/
+/*    background: #053361;*/
+/*    color: #ffffff;*/
+/*    !* Shadow - 25% Dark blue *!*/
+/*    box-shadow: 0px 4px 4px rgba(5, 51, 97, 0.25);*/
+/*    border-radius: 10px;*/
+/*    transition: 0.5s;*/
+/*    border: 1px solid;*/
+/*    border-color: rgba(167, 162, 162, 0);*/
+/*}*/
+/*.return-button:focus{*/
+/*    background: #FFD900;*/
+/*    border-radius: 10px;*/
+/*    transition: 0.5s;*/
+/*}*/
+
+/*NAVY BACKGROUND DESIGN*/
+.start-button{
+    /* 2 */
+    color:  #053361;
+    background: #ffffff;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-weight: 600;
+}
+.start-button:hover{
+    background: #053361;
+    color: #ffffff;
+    /* Shadow - 25% Dark blue */
+    box-shadow: 0px 4px 4px rgba(5, 51, 97, 0.25);
+    border-radius: 10px;
+    transition: 0.5s;
+    border: 1px solid;
+    border-color: #ffffff;
+}
+.start-button:focus{
+    background: #053361;
+    color: #ffffff;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+.return-button{
+    /* 2 */
+    background: #FFD900;
+    color: #053361;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-weight: 600;
+    border: 1px solid;
+    border-color: #FFD900;
+
+}
+.return-button:hover{
+    color: #FFD900;
+    background: #053361;
+    /* Shadow - 25% Dark blue */
+    box-shadow: 0px 4px 4px rgba(5, 51, 97, 0.25);
+    border-radius: 10px;
+    transition: 0.5s;
+    border-color: rgba(167, 162, 162, 0);
+    border: 1px solid;
+    border-color: #FFD900;
+}
+.return-button:focus{
+    color: #FFD900;
+    background: #053361;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+.iparking-text{
+    color: #FFD900;
+}
+.anchor-btn{
+    text-decoration: none;
+    /*margin-top: 5px;*/
+    /*margin-bottom: 5px;*/
+}
+.divider-10{
+    height: 10px;
+}
+.checkmark{
+    display: block;
+    width: 25px;
+    height: 25px;
+    background-color: #ddd;
+    border-radius: 5px;
+    position: relative;
+    transition: background-color 0.4s;
+}
+
+#check:checked ~ .checkmark{
+    background-color: #1773CF;
+}
+
+.checkmark::after{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 16px;
+    border-right: 5px solid #fff;
+    border-bottom: 5px solid #fff;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateZ(40deg) scale(10);
+    opacity: 0;
+}
+#check:checked ~ .checkmark::after{
+    opacity: 1;
+    transform: translate(-50%, -50%) rotateZ(40deg) scale(1);
+}
+.check-text{
+    position: relative;
+    bottom: 30px;
+    left: 35px;
+}
+
+.close{
+    position: absolute;
+    top: 5%;
+    left: 8%;
+}
+
+.link{
+    font-weight: 600;
+    color: #1773CF;
+}
+.light-link{
+    color: #1c88f3;
+}
+.register-text{
+    font-size: 14px;
+}
+.selected{
+    color: #6D747A;
+}
+
+/*Validation CSS*/
+.error{
+    color: red;
+    font-weight: 400;
+    display: block;
+    padding-left: 10px;
+    font-size: 14px;
+}
+.input-error{
+    /*border-color: red; */
+    border: 1px solid red;
+}
+
+
+

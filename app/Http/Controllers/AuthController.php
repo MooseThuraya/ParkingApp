@@ -32,14 +32,15 @@ class AuthController extends Controller
     public function registerPage()
     {
 //        Session::flush();
-        $city_list =  Http::get('173.212.205.167/api/v1/cities')->json();
+        $server_ip = 'server_ip'
+        $city_list =  Http::get($server_ip.'/api/v1/cities')->json();
         //dd($city_list);
         return view('auth.register', compact('city_list'));
     }
     public function requestOtp(Request $request)
-    {
+    {   $server_ip = 'server_ip'
         $mobile_number = $request->resend_number;
-        $user_info = Http::withToken(session()->get('user_info')['access_token'])->get('173.212.205.167/api/v1/request-otp')->json();
+        $user_info = Http::withToken(session()->get('user_info')['access_token'])->get($server_ip.'/api/v1/request-otp')->json();
 
         return view('auth.otp', compact('mobile_number'));
     }
@@ -47,8 +48,8 @@ class AuthController extends Controller
     public function verifyAccountLogin(Request $request)
     {
         $access_token = session()->get('user_info')['access_token'];
-
-        $user_info = Http::asForm()->post('173.212.205.167/api/v1/login-otp', [
+        $server_ip = 'server_ip'
+        $user_info = Http::asForm()->post($server_ip.'/api/v1/login-otp', [
             'mobile_number' => $request->mobile_number
         ])->json();
 
@@ -63,8 +64,8 @@ class AuthController extends Controller
         $this->validate($request, [
             'mobile_number' => 'Required|regex:/^([0-9\s\-\+\(\)]*)$/|numeric'
         ]);
-
-        $user_info = Http::asForm()->post('173.212.205.167/api/v1/login-otp', [
+        $server_ip = 'server_ip'
+        $user_info = Http::asForm()->post($server_ip.'/api/v1/login-otp', [
             'mobile_number' => $request->mobile_number
         ])->json();
         //dd($user_info);
@@ -80,22 +81,7 @@ class AuthController extends Controller
         $this->validate($request, [
             'mobile_number' => 'Required|regex:/^([0-9\s\-\+\(\)]*)$/|numeric'
         ]);
-        //perform api call
-//        $user_info = Http::asForm()->post('173.212.205.167/api/v1/login-otp', [
-//            'mobile_number' => $request->mobile_number
-//        ])->json();
-//        //dd($user_info);
-        //if response if false get in
         if(1){
-//            Validator::make($request->all(), [
-//                'mobile_number' => ['Required', function($attribute, $value, $fail){
-//                    $fail('Reservation is not available at these times');
-//
-//                }]
-//            ])->validate();
-
-//            session()->put('title', 'false');
-
             $mobile_number ='';
             $title = false;
             return view('auth.qrsent', compact('mobile_number', 'title'));
@@ -113,23 +99,22 @@ class AuthController extends Controller
 
         $access_token = session()->get('user_info')['access_token'];
 
-//        $request->mobile_number =$request->mobile_number;
         $this->validate($request, [
             'mobile_number' => 'Required|regex:/^([0-9\s\-\+\(\)]*)$/|numeric',
         ]);
-
-        $user_info = Http::asForm()->post('173.212.205.167/api/v1/verify-otp-login', [
+           $server_ip = 'server_ip'
+        $user_info = Http::asForm()->post($server_ip = 'server_ip'/api/v1/verify-otp-login', [
             'mobile_number' => $request->mobile_number,
             'otp' => $request->otp
         ])->json();
 
-        $profile_info = Http::withToken($user_info['access_token'])->get('173.212.205.167/api/v1/profile')->json();
+        $profile_info = Http::withToken($user_info['access_token'])->get($server_ip.'/api/v1/profile')->json();
         session()->put('profile_info', $profile_info);
 
-        $get_banner = Http::withToken($user_info['access_token'])->get('173.212.205.167/api/v1/banners')->json();
+        $get_banner = Http::withToken($user_info['access_token'])->get($server_ip.'/api/v1/banners')->json();
 
         if(array_key_exists("access_token",$user_info)){
-            $park_list = Http::withToken($user_info['access_token'])->get('173.212.205.167/api/v1/parks')->json();
+            $park_list = Http::withToken($user_info['access_token'])->get($server_ip.'/api/v1/parks')->json();
             $user_token = $user_info['access_token'];
             return view('home.homepage',compact('park_list', 'user_token', 'get_banner'));
             //return redirect('/reservations');
@@ -167,8 +152,8 @@ class AuthController extends Controller
 //        if($validator->fails()) {
 //            return redirect()->route('auth.register', [])->withErrors($validator);
 //        }
-
-        $user_info = Http::asForm()->post('173.212.205.167/api/v1/register', [
+        $server_ip = 'server_ip'
+        $user_info = Http::asForm()->post($server_ip.'/api/v1/register', [
             'email' => $request->email,
             'name' => $request->name,
             'mobile_number' => $request->mobile_number

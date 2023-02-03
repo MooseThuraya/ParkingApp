@@ -24,38 +24,44 @@ The parking app I worked on aimed to solve the problem of disorganized parking b
 
 ## Demo
 
-### Start Page - Web Version
-
+<h3 align="center"> Start Page - Web Version </h3>
+<div align="center">
 <img src="images/start-page.png" width=868 height=453 />
+</div>
 
-### Login Page - Web Version
-
+<h3 align="center"> Login Page - Web Version </h3>
+<div align="center">
 <img src="images/LoginPageWide.png" width=868 height=453 />
-
-<div style="display:flex; justify-content:center">
-
-### Login & Registration
-
+</div>
+<h3 align="center"> Login & Registration </h3>
+<div align="center">
 <img src="images/LoginPage.png" width=339 height=588 />
 <img src="images/RegisterPage.png" width=339 height=588 />
+</div>
 
-### Start View Mobile & Enter OTP
-
+<h3 align="center"> Start View Mobile & Enter OTP </h3>
+<div align="center">
 <img src="images/StartPage.png" width=339 height=588 />
 <img src="images/OTPPage.png" width=339 height=588 />
+</div>
 
-### Home & Sidenav
 
+<h3 align="center"> Home & Sidenav </h3>
+<div align="center">
 <img src="images/HomePage.png" width=339 height=588 />
 <img src="images/Siderbar.png" width=339 height=588 />
+</div>
 
-### Make an Appointment & Payment
 
+<h3 align="center"> Make an Appointment & Payment </h3>
+<div align="center">
 <img src="images/MakeAnAppointmentPage.png" width=339 height=588 />
 <img src="images/PaymentPage.png" width=339 height=588 />
+</div>
 
-### Success & Point Packages
 
+<h3 align="center"> Success & Point Packages </h3>
+<div align="center">
 <img src="images/SuccessPage.png" width=339 height=588 />
 <img src="images/PointsPackagesPage.png" width=339 height=588 />
 </div>

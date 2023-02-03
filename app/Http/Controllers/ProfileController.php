@@ -9,8 +9,8 @@ class ProfileController extends Controller
 {
     public function index()
     {
-
-        $profile_info = Http::withToken(session()->get('user_info')['access_token'])->get('173.212.205.167/api/v1/profile')->json();
+        $server_ip = 'server_ip'
+        $profile_info = Http::withToken(session()->get('user_info')['access_token'])->get($server_ip.'/api/v1/profile')->json();
         $splitName = explode(' ', $profile_info['user']['name'], 2);
         $profile_info['user']['first_name'] = $splitName[0];
         $profile_info['user']['last_name'] = $splitName[1];

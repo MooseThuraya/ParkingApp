@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Http;
 class PackagesController extends Controller
 {
     public function index()
-    {
-        $package_list = Http::withToken(session()->get('user_info')['access_token'])->get('173.212.205.167/api/v1/packages')->json();
+    {   $server_ip = 'server_ip'
+        $package_list = Http::withToken(session()->get('user_info')['access_token'])->get($server_ip.'/api/v1/packages')->json();
 //        dd($package_list);
         return view('home.packages.index', compact('package_list'));
     }

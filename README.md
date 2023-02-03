@@ -1,4 +1,4 @@
-# Parking Reservation App
+# Parking Reservation App (Jan. 2021 – Jul. 2021)
 
 ## Project Overview
 The parking app I worked on aimed to solve the problem of disorganized parking by facilitating it via reservations. The app allows users to register, make a reservation, make a payment and buy point packages, making parking access more accessible and efficient.

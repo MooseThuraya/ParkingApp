@@ -24,9 +24,9 @@ class ReservationsController extends Controller
      */
     public function index()
     {
-
-        $reservation_list = Http::withToken(session()->get('user_info')['access_token'])->get('173.212.205.167/api/v1/user-reservations')->json();
-        $park_list = Http::withToken(session()->get('user_info')['access_token'])->get('173.212.205.167/api/v1/parks')->json();
+        $server_ip = 'server_ip'
+        $reservation_list = Http::withToken(session()->get('user_info')['access_token'])->get($server_ip.'/api/v1/user-reservations')->json();
+        $park_list = Http::withToken(session()->get('user_info')['access_token'])->get($server_ip.'/api/v1/parks')->json();
 
         $park_list = collect($park_list['data']);
 
@@ -42,6 +42,7 @@ class ReservationsController extends Controller
     }
     public function checkReservation(Request $request)
     {
+        $server_ip = 'server_ip'
         Debugbar::info('just got in checkReservation');
         //store access token
         $access_token = session()->get('user_info')['access_token'];
@@ -50,7 +51,7 @@ class ReservationsController extends Controller
         if($request->discount_code == null){
             $request->discount_code = "NONE";
         }
-        $is_reservation_available = Http::withToken($access_token)->post('173.212.205.167/api/v1/reservations_check',
+        $is_reservation_available = Http::withToken($access_token)->post($server_ip.'/api/v1/reservations_check',
             [
                 "type" => $request->type,
                 "park_id"=> $request->park_id ,
@@ -92,8 +93,8 @@ class ReservationsController extends Controller
         $access_token = session()->get('user_info')['access_token'];
         $park_id = (int)$request->park_id;
         $type = strtoupper($request->type);
-
-        $is_reservation_available = Http::withToken($access_token)->post('173.212.205.167/api/v1/reservations_check',
+        $server_ip = 'server_ip'
+        $is_reservation_available = Http::withToken($access_token)->post($server_ip.'/api/v1/reservations_check',
             [
                 "type" => $type,
                 "park_id"=> $park_id ,
@@ -117,7 +118,7 @@ class ReservationsController extends Controller
             ])->validate();
         }
 
-        $reservation_price = Http::withToken($access_token)->post('173.212.205.167/api/v1/reservations_price',
+        $reservation_price = Http::withToken($access_token)->post($server_ip.'/api/v1/reservations_price',
             [
                 "type" => $type,
                 "park_id"=> $park_id ,
@@ -132,7 +133,7 @@ class ReservationsController extends Controller
         $total_after_discount = $reservation_price['price_discounted'];
         session()->put('total_before_discount', $total_before_discount);
         session()->put('total_after_discount', $total_after_discount);
-        $profile_info = Http::withToken($access_token)->get('173.212.205.167/api/v1/profile')->json();
+        $profile_info = Http::withToken($access_token)->get($server_ip.'/api/v1/profile')->json();
 
         foreach ($profile_info as $value){
            $user_points =  $value['user_points'];
@@ -166,7 +167,7 @@ class ReservationsController extends Controller
         return view('home.reservations.show', compact('user_points', 'payment_status','total_before_discount', 'total_after_discount', 'reservation_details'));
     }
     public function reserve(Request $request)
-    {
+    {   $server_ip = 'server_ip'
         //check if discount code is null, enter default value
         if($request->discount_code == null){
             $request->discount_code = "none";
@@ -175,7 +176,7 @@ class ReservationsController extends Controller
         $total_after_discount_string = session()->get('total_after_discount');
         $total_after_discount = (int)$total_after_discount_string;
         $access_token = session()->get('user_info')['access_token'];
-        $add_payment = Http::withToken($access_token)->post('173.212.205.167/api/v1/payment_add',
+        $add_payment = Http::withToken($access_token)->post($server_ip.'/api/v1/payment_add',
         [
             'points_count' => $total_after_discount,
             'transaction_status' => 'SUCCESS',
@@ -188,7 +189,7 @@ class ReservationsController extends Controller
         $payment_id = (int)$add_payment['payment_id'];
         $type = strtoupper($request->type);
         $discount_code = strtoupper($request->discount_code);
-            $add_reservation = Http::withToken($access_token)->post('173.212.205.167/api/v1/reservations_add',
+            $add_reservation = Http::withToken($access_token)->post($server_ip.'/api/v1/reservations_add',
                 [
                     "type" => $type,
                     "park_id"=> $park_id,
@@ -199,7 +200,7 @@ class ReservationsController extends Controller
                 ]
             )->json();
             //refresh points value
-            $profile_info = Http::withToken($access_token)->get('173.212.205.167/api/v1/profile')->json();
+            $profile_info = Http::withToken($access_token)->get($server_ip.'/api/v1/profile')->json();
             session()->put('profile_info', $profile_info);
 //        dd($add_reservation);
 
@@ -228,7 +229,8 @@ class ReservationsController extends Controller
         return view('home.reservations.create', compact('reservation_id'));
     }
     public function cancelReservation(Request $reservation_id)
-    {
+    {   
+        $server_ip = 'server_ip'
         //dd($reservation_id['Reservation_id']);
         //$request = $reservation_id->request;
         //$reservation_id = $request->get('id');
@@ -237,10 +239,10 @@ class ReservationsController extends Controller
 //            dd($value);
 //        }
         $access_token = session()->get('user_info')['access_token'];
-        $cancel_reservation = Http::withToken($access_token)->post('173.212.205.167/api/v1/reservations_cancel', [
+        $cancel_reservation = Http::withToken($access_token)->post($server_ip.'/api/v1/reservations_cancel', [
             'id' => $reservation_id['Reservation_id']
         ])->json();
-        $profile_info = Http::withToken($access_token)->get('173.212.205.167/api/v1/profile')->json();
+        $profile_info = Http::withToken($access_token)->get($server_ip.'/api/v1/profile')->json();
         session()->put('profile_info', $profile_info);
         return redirect('/reservations');
 
@@ -256,7 +258,6 @@ class ReservationsController extends Controller
     {
 
         //$payment_id = 2;
-        //Http::Post('173.212.205.167/api/v1/reservations_add?type='.$request->type.'&park_id='.$park_id.'&start_datetime='.$request->start_datetime.'&end_datetime='.$request->end_datetime.'&payment_id='.$payment_id)->json();
 
     }
 

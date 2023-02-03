@@ -8,6 +8,20 @@ The parking app I worked on aimed to solve the problem of disorganized parking b
 - OTP authentication
 - Home, profile, reservation, and payment pages
 
+
+## Technologies Used
+- PHP
+- Laravel
+- MySQL
+- HTML
+- CSS
+- JavaScript
+- AJAX
+- jQuery
+- Bootstrap
+- Postman
+- Figma
+
 ## Demo
 
 ### Start Page - Web Version
@@ -45,16 +59,3 @@ The parking app I worked on aimed to solve the problem of disorganized parking b
 <img src="images/SuccessPage.png" width=339 height=588 />
 <img src="images/PointsPackagesPage.png" width=339 height=588 />
 </div>
-
-## Technologies Used
-- PHP
-- Laravel
-- MySQL
-- HTML
-- CSS
-- JavaScript
-- AJAX
-- jQuery
-- Bootstrap
-- Postman
-- Figma

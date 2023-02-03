@@ -15,16 +15,17 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $server_ip = 'server_ip'
         //login temporary
-        $user_info = Http::post('173.212.205.167/api/v1/login',[
+        $user_info = Http::post($server_ip.'/api/v1/login',[
             'email' => 'zonday@gmail.com',
             'password' => 'password'
         ])->json();
         session()->put('user_info', $user_info);
-        $profile_info = Http::withToken($user_info['access_token'])->get('173.212.205.167/api/v1/profile')->json();
+        $profile_info = Http::withToken($user_info['access_token'])->get($server_ip.'/api/v1/profile')->json();
         session()->put('profile_info', $profile_info);
         $banner ='';
-        $get_banner = Http::withToken(session()->get('user_info')['access_token'])->get('173.212.205.167/api/v1/banners')->json();
+        $get_banner = Http::withToken(session()->get('user_info')['access_token'])->get($server_ip.'/api/v1/banners')->json();
 
 //        foreach ($get_banner as $index){
 //            foreach ($index as $value){
@@ -32,9 +33,9 @@ class HomeController extends Controller
 //            }
 //        }
 
-        $park_list = Http::withToken(session()->get('user_info')['access_token'])->get('173.212.205.167/api/v1/parks')->json();
+        $park_list = Http::withToken(session()->get('user_info')['access_token'])->get($server_ip.'/api/v1/parks')->json();
         $user_token = session()->get('user_info')['access_token'];
-        $profile_info = Http::withToken(session()->get('user_info')['access_token'])->get('173.212.205.167/api/v1/profile')->json();
+        $profile_info = Http::withToken(session()->get('user_info')['access_token'])->get($server_ip.'/api/v1/profile')->json();
         session()->put('profile_info', $profile_info);
 //        dd($banner);
 
